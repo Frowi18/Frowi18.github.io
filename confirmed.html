@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RAVEN — почта подтверждена</title>
+<style>
+  body { margin: 0; background: #121318; color: #E8EAF0; font-family: "Segoe UI", Inter, system-ui, sans-serif; line-height: 1.6; }
+  main { max-width: 560px; margin: 0 auto; padding: 96px 24px; text-align: center; }
+  h1 { font-size: 40px; letter-spacing: 6px; margin: 0 0 24px; }
+  .ok { display: inline-block; width: 72px; height: 72px; border-radius: 50%; background: #3FBF7F; color: #fff;
+        font-size: 40px; line-height: 72px; margin-bottom: 20px; }
+  .err { background: #E5484D; }
+  p { color: #C9CDD6; font-size: 18px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>RAVEN</h1>
+  <div id="icon" class="ok">✓</div>
+  <p id="text">Почта подтверждена! Вернись в RAVEN и войди со своей почтой и паролем.</p>
+</main>
+<script>
+  // Если ссылка устарела, Supabase передаёт ошибку в адресе
+  var h = location.hash + location.search;
+  if (h.indexOf("error") >= 0) {
+    document.getElementById("icon").className = "ok err";
+    document.getElementById("icon").textContent = "!";
+    document.getElementById("text").textContent =
+      "Ссылка устарела или уже использована. Попробуй войти в RAVEN — если почта не подтверждена, зарегистрируйся заново.";
+  }
+</script>
+</body>
+</html>
